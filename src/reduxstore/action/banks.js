@@ -5,6 +5,7 @@ import {
   FETCH_ALL_BANKS_SUCCESS,
 } from "../actionTypes/banks";
 export const fetchAllBanks = () => {
+  console.log("Action");
   return {
     type: FETCH_ALL_BANKS,
   };
