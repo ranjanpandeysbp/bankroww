@@ -12,4 +12,5 @@ const mapStateToProps = ({ banks }) => {
     list: banks.bankList,
   };
 };
+
 export default connect(mapStateToProps)(AllBanks);
