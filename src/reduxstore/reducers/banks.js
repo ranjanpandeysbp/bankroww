@@ -8,6 +8,7 @@ const initialState = {
   isLoading: true,
   bankList: [],
   isError: false,
+  currentCity: "Mumbai",
 };
 
 const BanksReducer = (state = initialState, action) => {
