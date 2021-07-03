@@ -11,6 +11,7 @@ function ShowDropdown(props) {
   const handleSelected = (size) => {
     updateShowSize(size);
     changeHandler();
+    window.scroll(0, 0);
   };
   return (
     <div className="show-dropdown">

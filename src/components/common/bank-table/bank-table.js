@@ -17,6 +17,7 @@ function BankTable(props) {
     totalBanks,
     currentPage,
   } = props;
+  const total = Math.ceil(totalBanks / showCount);
   return (
     <div className="table-container">
       <div className="table-header">
@@ -91,7 +92,7 @@ function BankTable(props) {
             />
           </div>
           <div className="pagination-container">
-            <Pagination updatePage={updatePage} />
+            <Pagination updatePage={updatePage} total={total} />
           </div>
           <div className="rows-showing">{`Showing ${
             (currentPage - 1) * showCount + 1

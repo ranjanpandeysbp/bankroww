@@ -20,17 +20,22 @@ const NextButton = () => {
   );
 };
 function Pagination(props) {
-  const { updatePage } = props;
+  const { updatePage, total } = props;
+
+  const handlePageChange = (e) => {
+    updatePage(e.selected + 1);
+    window.scroll(0, 0);
+  };
   return (
     <ReactPaginate
       previousLabel={<PreviousButton />}
       nextLabel={<NextButton />}
       breakLabel="..."
-      pageCount={100}
+      pageCount={total}
       initialPage={0}
       marginPagesDisplayed={1}
       pageRangeDisplayed={2}
-      onPageChange={(e) => updatePage(e.selected + 1)}
+      onPageChange={(e) => handlePageChange(e)}
       containerClassName="pagination"
       activeClassName="active"
     />

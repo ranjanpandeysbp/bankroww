@@ -2,6 +2,7 @@ import {
   FETCHING_DATA,
   FETCH_ALL_BANKS_FAILURE,
   FETCH_ALL_BANKS_SUCCESS,
+  SEARCH_BANKS,
   UPDATE_PAGE,
   UPDATE_SHOW_SIZE,
 } from "../actionTypes/banks";
@@ -9,6 +10,7 @@ import {
 const initialState = {
   isLoading: true,
   bankList: [],
+  toChangeBankList: [],
   favourites: [],
   listToShow: [],
   isError: false,
@@ -16,6 +18,7 @@ const initialState = {
   totalBanks: 0,
   currentPage: 1,
   showCount: 10,
+  searchCriteria: "bank_name",
 };
 
 const BanksReducer = (state = initialState, action) => {
@@ -35,6 +38,7 @@ const BanksReducer = (state = initialState, action) => {
       return {
         ...state,
         bankList: data,
+        toChangeBankList: data,
         totalBanks: data.length,
         listToShow: toShow,
         isLoading: false,
@@ -49,7 +53,7 @@ const BanksReducer = (state = initialState, action) => {
     }
     case UPDATE_PAGE: {
       const { page } = action;
-      const toShow = state.bankList.slice(
+      const toShow = state.toChangeBankList.slice(
         (page - 1) * state.showCount,
         page * state.showCount
       );
@@ -61,7 +65,7 @@ const BanksReducer = (state = initialState, action) => {
     }
     case UPDATE_SHOW_SIZE: {
       const { size } = action;
-      const toShow = state.bankList.slice(
+      const toShow = state.toChangeBankList.slice(
         (state.currentPage - 1) * size,
         state.currentPage * size
       );
@@ -69,6 +73,21 @@ const BanksReducer = (state = initialState, action) => {
         ...state,
         listToShow: toShow,
         showCount: size,
+      };
+    }
+    case SEARCH_BANKS: {
+      const { query } = action;
+      const toSearch = query.toUpperCase();
+      const res = state.bankList.filter((bank) =>
+        bank[state.searchCriteria].includes(toSearch)
+      );
+      const toShow = res.slice(0, state.showCount);
+      return {
+        ...state,
+        listToShow: toShow,
+        toChangeBankList: res,
+        totalBanks: res.length,
+        currentPage: 1,
       };
     }
     default:
