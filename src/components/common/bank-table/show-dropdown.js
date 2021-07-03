@@ -2,10 +2,15 @@ import React from "react";
 import { useState } from "react";
 import "./show-dropdown.css";
 import { showSizes } from "../../../constants/banks/index";
-function ShowDropdown() {
+function ShowDropdown(props) {
+  const { updateShowSize } = props;
   const [open, setOpen] = useState(false);
   const changeHandler = () => {
     setOpen(!open);
+  };
+  const handleSelected = (size) => {
+    updateShowSize(size);
+    changeHandler();
   };
   return (
     <div className="show-dropdown">
@@ -32,7 +37,7 @@ function ShowDropdown() {
                 <div
                   className="option"
                   data-option={size}
-                  onClick={changeHandler}
+                  onClick={() => handleSelected(size)}
                   role="presentation"
                 >
                   {size}

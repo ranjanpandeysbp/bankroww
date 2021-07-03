@@ -80,7 +80,7 @@ function BankTable(props) {
             <ShowDropdown updateShowSize={updateShowSize} />
           </div>
           <div className="pagination-container">
-            <Pagination updatePage={(size) => updatePage(size)} />
+            <Pagination updatePage={updatePage} />
           </div>
           <div className="rows-showing">{`Showing 10 - 20 of 200`}</div>
         </div>

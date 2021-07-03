@@ -9,3 +9,9 @@ export const FETCHING_DATA = "FETCHING_DATA";
 export const UPDATE_SHOW_SIZE = "UPDATE_SHOW_SIZE";
 
 export const UPDATE_PAGE = "UPDATE_PAGE";
+
+export const CHANGE_CATEGORY = "CHANGE_CATEGORY";
+
+export const CHANGE_CITY = "CHANGE_CITY";
+
+export const SEARCH_BANKS = "SEARCH_BANKS";

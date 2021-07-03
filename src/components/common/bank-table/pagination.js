@@ -20,6 +20,7 @@ const NextButton = () => {
   );
 };
 function Pagination(props) {
+  const { updatePage } = props;
   return (
     <ReactPaginate
       previousLabel={<PreviousButton />}
@@ -29,15 +30,13 @@ function Pagination(props) {
       initialPage={0}
       marginPagesDisplayed={1}
       pageRangeDisplayed={2}
-      onPageChange={(e) => console.log(e)}
+      onPageChange={(e) => updatePage(e.selected + 1)}
       containerClassName="pagination"
       activeClassName="active"
     />
   );
 }
 const mapDispatchToProps = (dispatch) => {
-  return {
-    updatePage: (page) => dispatch(updatePage(page)),
-  };
+  return {};
 };
 export default connect(null, mapDispatchToProps)(Pagination);

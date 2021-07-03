@@ -15,4 +15,36 @@
 }
 .options-dropdown {
   display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.search {
+  background-color: white;
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px 20px;
+}
+.search input {
+  width: 100%;
+
+  outline: none;
+  border: none;
+}
+
+@media only screen and (max-width: 780px) {
+  .options-dropdown {
+    width: 90%;
+    margin-top: 12px;
+  }
+  .all-banks-options {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .search {
+    width: 90%;
+  }
 }

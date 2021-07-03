@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import "./dropdown.css";
-const TOPIC = [{ types: ["Apple", "Mango", "Banana"] }];
-function Dropdown() {
+
+function Dropdown({ options }) {
   const [open, setOpen] = useState(false);
   const changeHandler = () => {
     setOpen(!open);
@@ -21,7 +21,7 @@ function Dropdown() {
       </div>
       {open ? (
         <div className="topic-list">
-          {TOPIC.map(({ types, category }) => {
+          {options.map(({ types, category }) => {
             return (
               <div className="topic-list-item">
                 <div className="sub-topic-list">

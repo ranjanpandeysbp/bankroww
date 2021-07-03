@@ -1,5 +1,5 @@
 .topic-dropdown {
-  width: 240px;
+  width: 80%;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
   background-color: #fff;
   display: flex;
   position: relative;
-  width: 240px;
+  width: 100%;
   padding: 12px 20px;
   box-sizing: border-box;
 }
@@ -37,7 +37,7 @@
 .topic-dropdown .topic-list {
   display: flex;
   background-color: #fff;
-  width: 240px;
+  width: 100%;
   padding: 12px 20px;
   justify-content: space-between;
   box-sizing: border-box;
@@ -65,4 +65,10 @@
 }
 .topic-dropdown .topic-list .topic-list-item .sub-topic-list .sub-topic-item {
   padding: 8px 0;
+}
+
+@media only screen and (max-width: 780px) {
+  .topic-dropdown .current-topic .main-topic {
+    font-size: 12px;
+  }
 }

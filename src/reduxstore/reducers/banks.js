@@ -30,7 +30,7 @@ const BanksReducer = (state = initialState, action) => {
       const { data } = action;
       const toShow = data.slice(
         (state.currentPage - 1) * state.showCount,
-        state.currentPage * state.showCount - 1
+        state.currentPage * state.showCount
       );
       return {
         ...state,
@@ -51,7 +51,7 @@ const BanksReducer = (state = initialState, action) => {
       const { page } = action;
       const toShow = state.bankList.slice(
         (page - 1) * state.showCount,
-        page * state.showCount - 1
+        page * state.showCount
       );
       return {
         ...state,
@@ -63,7 +63,7 @@ const BanksReducer = (state = initialState, action) => {
       const { size } = action;
       const toShow = state.bankList.slice(
         (state.currentPage - 1) * size,
-        state.currentPage * size - 1
+        state.currentPage * size
       );
       return {
         ...state,
