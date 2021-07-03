@@ -9,7 +9,7 @@ function Header() {
       <div className="header-menu">
         <Link to="/all-banks">
           <label
-            className={`menu-option ${tab === "All Banks" && "active"}`}
+            className={`menu-option ${tab === "All Banks" && "active-tab"}`}
             onClick={() => setTab("All Banks")}
           >
             All Banks
@@ -17,7 +17,7 @@ function Header() {
         </Link>
         <Link to="/favourites">
           <label
-            className={`menu-option ${tab === "Favourites" && "active"}`}
+            className={`menu-option ${tab === "Favourites" && "active-tab"}`}
             onClick={() => setTab("Favourites")}
           >
             Favourites

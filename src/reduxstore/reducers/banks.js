@@ -7,8 +7,13 @@ import {
 const initialState = {
   isLoading: true,
   bankList: [],
+  favourites: [],
+  listToShow: [],
   isError: false,
   currentCity: "Mumbai",
+  totalBanks: 0,
+  currentPage: 1,
+  showCount: 10,
 };
 
 const BanksReducer = (state = initialState, action) => {

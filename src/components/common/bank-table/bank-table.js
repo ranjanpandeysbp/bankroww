@@ -1,6 +1,8 @@
 import React from "react";
 import "./bank-table.css";
 import Loader from "./loader";
+import ShowDropdown from "./show-dropdown";
+import Pagination from "./pagination";
 
 function BankTable(props) {
   const { list, isLoading, isError } = props;
@@ -10,6 +12,8 @@ function BankTable(props) {
       <div className="table-header">
         <div className="table">
           <div className="table-row">
+            <div className="table-column add-favourite"></div>
+
             <div className="table-column bank-head">
               <div className="">BANK</div>
             </div>
@@ -40,6 +44,9 @@ function BankTable(props) {
                 list.map((data) => {
                   return (
                     <div className="table-row">
+                      <div className="table-column add-favourite">
+                        <i class="fi-rr-star"></i>
+                      </div>
                       <div className="table-column bank">
                         <div className="">{data.bank_name}</div>
                       </div>
@@ -67,9 +74,11 @@ function BankTable(props) {
       </div>
       {list.length ? (
         <div className="table-footer">
-          <div className="show-container">{/* <ShowDropdown /> */}</div>
+          <div className="show-container">
+            <ShowDropdown />
+          </div>
           <div className="pagination-container">
-            {/* <TablePagination /> */}
+            <Pagination />
           </div>
           <div className="rows-showing">{`Showing 10 - 20 of 200`}</div>
         </div>

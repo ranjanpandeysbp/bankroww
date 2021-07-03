@@ -1,0 +1,40 @@
+.pagination {
+  display: flex;
+}
+.pagination .active a {
+  border: 1px solid #2f89fc;
+  background-color: #eaf3fe;
+}
+.pagination li {
+  display: inline;
+}
+.pagination li a {
+  box-sizing: border-box;
+  border: 1px solid #d8dde6;
+  color: #666;
+  font-size: 12px;
+  border-radius: 4px;
+  line-height: 20px;
+  width: auto;
+  box-sizing: border-box;
+  padding: 2px 10px;
+  margin: 0 4px;
+  position: relative;
+  text-decoration: none;
+  display: block;
+  height: 25px;
+}
+.pagination li a .prev-button {
+  display: flex;
+  align-items: center;
+}
+.pagination li a .prev-button .btn-label {
+  margin-left: 4px;
+}
+.pagination li a .next-button {
+  display: flex;
+  align-items: center;
+}
+.pagination li a .next-button .btn-label {
+  margin-right: 4px;
+}

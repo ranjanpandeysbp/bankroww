@@ -67,7 +67,7 @@
   margin-top: 24px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
 }
 .table-container .table-footer .pagination-container {
   display: flex;
@@ -90,7 +90,7 @@
   padding: 16px 0px;
 }
 .address {
-  width: 30%;
+  width: 25%;
 
   padding: 16px 10px;
 }
@@ -109,11 +109,15 @@
   width: 15%;
 }
 .address-head {
-  width: 30%;
+  width: 25%;
 }
 .bank-id-head {
   width: 15%;
 }
 .branch-head {
   width: 20%;
+}
+
+.add-favourite {
+  width: 5%;
 }
