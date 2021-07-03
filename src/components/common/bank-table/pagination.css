@@ -38,3 +38,9 @@
 .pagination li a .next-button .btn-label {
   margin-right: 4px;
 }
+
+.button-center i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -7,8 +7,16 @@ import { connect } from "react-redux";
 import { updatePage, updateShowSize } from "../../../reduxstore/action/banks";
 
 function BankTable(props) {
-  const { list, isLoading, isError, updateShowSize, updatePage } = props;
-  console.log(props);
+  const {
+    list,
+    isLoading,
+    isError,
+    updateShowSize,
+    updatePage,
+    showCount,
+    totalBanks,
+    currentPage,
+  } = props;
   return (
     <div className="table-container">
       <div className="table-header">
@@ -77,12 +85,17 @@ function BankTable(props) {
       {list.length ? (
         <div className="table-footer">
           <div className="show-container">
-            <ShowDropdown updateShowSize={updateShowSize} />
+            <ShowDropdown
+              updateShowSize={updateShowSize}
+              showCount={showCount}
+            />
           </div>
           <div className="pagination-container">
             <Pagination updatePage={updatePage} />
           </div>
-          <div className="rows-showing">{`Showing 10 - 20 of 200`}</div>
+          <div className="rows-showing">{`Showing ${
+            (currentPage - 1) * showCount + 1
+          } - ${currentPage * showCount} of ${totalBanks}`}</div>
         </div>
       ) : null}
     </div>

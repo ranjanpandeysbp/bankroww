@@ -5,7 +5,7 @@ import { updatePage } from "../../../reduxstore/action/banks";
 import "./pagination.css";
 const PreviousButton = () => {
   return (
-    <div className="prev-button">
+    <div className="prev-button button-center">
       <i class="fi-rr-angle-small-left"></i>
       <div className="btn-label">Previous</div>
     </div>
@@ -13,7 +13,7 @@ const PreviousButton = () => {
 };
 const NextButton = () => {
   return (
-    <div className="next-button">
+    <div className="next-button button-center">
       <div className="btn-label">Next</div>
       <i class="fi-rr-angle-small-right"></i>
     </div>

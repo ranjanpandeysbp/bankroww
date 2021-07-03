@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./show-dropdown.css";
 import { showSizes } from "../../../constants/banks/index";
 function ShowDropdown(props) {
-  const { updateShowSize } = props;
+  const { updateShowSize, showCount } = props;
   const [open, setOpen] = useState(false);
   const changeHandler = () => {
     setOpen(!open);
@@ -17,7 +17,7 @@ function ShowDropdown(props) {
       <div className="show-text">show</div>
       <div className="dropdown-container">
         <div className="dropdown">
-          <div>10</div>
+          <div>{showCount}</div>
           <div
             className="down-arrow"
             onClick={changeHandler}
