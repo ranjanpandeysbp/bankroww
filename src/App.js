@@ -11,6 +11,7 @@ import Header from "./components/common/header/index";
 import AllBanks from "./components/all-banks/index";
 import BankDetails from "./components/bank-details/index";
 import { store } from "./reduxstore/store";
+import Favourites from "./components/favourites/index";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
             </Route>
             <Route exact path="/bank-details">
               <BankDetails />
+            </Route>
+            <Route exact path="/favourites">
+              <Favourites />
             </Route>
           </Switch>
         </Router>

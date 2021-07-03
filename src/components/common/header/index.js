@@ -15,12 +15,14 @@ function Header() {
             All Banks
           </label>
         </Link>
-        <label
-          className={`menu-option ${tab === "Favourites" && "active"}`}
-          onClick={() => setTab("Favourites")}
-        >
-          Favourites
-        </label>
+        <Link to="/favourites">
+          <label
+            className={`menu-option ${tab === "Favourites" && "active"}`}
+            onClick={() => setTab("Favourites")}
+          >
+            Favourites
+          </label>
+        </Link>
       </div>
     </div>
   );

@@ -4,10 +4,11 @@ import {
   FETCH_ALL_BANKS_FAILURE,
   FETCH_ALL_BANKS_SUCCESS,
 } from "../actionTypes/banks";
-export const fetchAllBanks = () => {
-  console.log("Action");
+export const fetchAllBanks = (city) => {
+  console.log("here");
   return {
     type: FETCH_ALL_BANKS,
+    city,
   };
 };
 

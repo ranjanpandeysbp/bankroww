@@ -1,41 +1,60 @@
 import React from "react";
 import "./bank-table.css";
 import Loader from "./loader";
-const items = [];
-function BankTable() {
-  const isFetching = true;
+
+function BankTable(props) {
+  const { list, isLoading, isError } = props;
+  console.log(list);
   return (
     <div className="table-container">
       <div className="table-header">
         <div className="table">
           <div className="table-row">
-            <div className="table-column bank ">BANK</div>
-            <div className="table-column ifsc ">IFSC</div>
-            <div className="table-column branch ">BRANCH</div>
-            <div className="table-column bank-id ">BANK ID</div>
-            <div className="table-column address address-top">ADDRESS</div>
+            <div className="table-column bank-head">
+              <div className="">BANK</div>
+            </div>
+            <div className="table-column ifsc-head">
+              <div className="">IFSC</div>
+            </div>
+            <div className="table-column branch-head">
+              <div className="">BRANCH</div>
+            </div>
+            <div className="table-column bank-id-head ">
+              <div className="">BANK ID</div>
+            </div>
+            <div className="table-column address-head">
+              <div className="">ADDRESS</div>
+            </div>
           </div>
         </div>
       </div>
       <div className="table-body">
         <div className="table">
-          {isFetching ? (
+          {isLoading ? (
             <div className="empty-table">
               <Loader />
             </div>
           ) : (
             <>
-              {items.length ? (
-                items.map((data) => {
+              {list.length ? (
+                list.map((data) => {
                   return (
                     <div className="table-row">
-                      <div className="table-column bank">{data.bank_name}</div>
-                      <div className="table-column ifsc">{data.ifsc}</div>
-                      <div className="table-column branch">{data.branch}</div>
-                      <div className="table-column bank-id ">
-                        {data.bank_id}
+                      <div className="table-column bank">
+                        <div className="">{data.bank_name}</div>
                       </div>
-                      <div className="table-column address">{data.address}</div>
+                      <div className="table-column ifsc">
+                        <div className="">{data.ifsc}</div>
+                      </div>
+                      <div className="table-column branch">
+                        <div className="">{data.branch}</div>
+                      </div>
+                      <div className="table-column bank-id">
+                        <div className="">{data.bank_id}</div>
+                      </div>
+                      <div className="table-column address">
+                        <div className="">{data.address}</div>
+                      </div>
                     </div>
                   );
                 })
@@ -46,7 +65,7 @@ function BankTable() {
           )}
         </div>
       </div>
-      {items.length ? (
+      {list.length ? (
         <div className="table-footer">
           <div className="show-container">{/* <ShowDropdown /> */}</div>
           <div className="pagination-container">
