@@ -16,3 +16,11 @@ export const dropdownCategories = [
     types: ["Bank Name", "IFSC", "Branch", "Bank Id", "Address"],
   },
 ];
+
+export const categoryMap = {
+  "Bank Name": "bank_name",
+  Address: "address",
+  "Bank Id": "bank_id",
+  Branch: "branch",
+  IFSC: "ifsc",
+};

@@ -1,3 +1,4 @@
+import { categoryMap } from "../../constants/banks";
 import {
   CHANGE_CATEGORY,
   FETCHING_DATA,
@@ -50,9 +51,10 @@ export const updatePage = (page) => {
 };
 
 export const changeCategory = (cat) => {
+  const category = categoryMap[cat];
   return {
     type: CHANGE_CATEGORY,
-    cat,
+    category,
   };
 };
 

@@ -12,6 +12,7 @@
   justify-content: space-between;
   background-color: #f3f4f7;
   padding: 12px 0px;
+  align-items: flex-end;
 }
 .options-dropdown {
   display: flex;
@@ -26,6 +27,7 @@
   justify-content: flex-start;
   align-items: center;
   padding: 12px 20px;
+  height: max-content;
 }
 .search input {
   width: 100%;
@@ -33,7 +35,14 @@
   outline: none;
   border: none;
 }
-
+.dropdown-parent {
+  width: 48%;
+}
+.dropdown-title-label {
+  margin-left: 6px;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
 @media only screen and (max-width: 780px) {
   .options-dropdown {
     width: 90%;

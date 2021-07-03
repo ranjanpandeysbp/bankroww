@@ -2,16 +2,31 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { dropdownCategories, dropdownCities } from "../../constants/banks";
-import { fetchAllBanks, searchBanks } from "../../reduxstore/action/banks";
+import {
+  changeCategory,
+  fetchAllBanks,
+  searchBanks,
+} from "../../reduxstore/action/banks";
 import BankTable from "../common/bank-table/bank-table";
 import "./all-banks.css";
 import Dropdown from "./dropdown/index";
 function AllBanks(props) {
-  const { list, isLoading, isError, searchBanks } = props;
+  const {
+    list,
+    isLoading,
+    isError,
+    searchBanks,
+    changeCategory,
+    fetchAllBanks,
+    searchCriteria,
+  } = props;
   const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
-    props.fetchAllBanks("MUMBAI");
+    fetchAllBanks("MUMBAI");
   }, []);
+  useEffect(() => {
+    setSearchQuery("");
+  }, [searchCriteria]);
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
     searchBanks(e.target.value);
@@ -28,8 +43,14 @@ function AllBanks(props) {
           <i class="fi-rr-search"></i>
         </div>
         <div className="options-dropdown">
-          <Dropdown options={dropdownCategories} />
-          <Dropdown options={dropdownCities} />
+          <div className="dropdown-parent">
+            <label className="dropdown-title-label">Search Criteria</label>
+            <Dropdown options={dropdownCategories} onSelect={changeCategory} />
+          </div>
+          <div className="dropdown-parent">
+            <label className="dropdown-title-label">City</label>
+            <Dropdown options={dropdownCities} onSelect={fetchAllBanks} />
+          </div>
         </div>
       </div>
       <div className="all-banks-table">
@@ -40,17 +61,18 @@ function AllBanks(props) {
 }
 
 const mapStateToProps = ({ banks }) => {
-  console.log(banks);
   return {
     list: banks.listToShow,
     isLoading: banks.isLoading,
     isError: banks.isError,
+    searchCriteria: banks.searchCriteria,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllBanks: (city) => dispatch(fetchAllBanks(city)),
     searchBanks: (query) => dispatch(searchBanks(query)),
+    changeCategory: (cat) => dispatch(changeCategory(cat)),
   };
 };
 

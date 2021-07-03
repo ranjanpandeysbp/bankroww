@@ -1,6 +1,10 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { banksUrl, cityList } from "../../constants/banks";
-import { fetchALlBanksSuccess, fetchAllBanksFailure } from "../action/banks";
+import {
+  fetchALlBanksSuccess,
+  fetchAllBanksFailure,
+  fetchingData,
+} from "../action/banks";
 import { FETCH_ALL_BANKS } from "../actionTypes/banks";
 
 async function fetchAllBanks(params) {
@@ -13,6 +17,7 @@ async function fetchAllBanks(params) {
 }
 
 function* fetchAllBanksSaga(params) {
+  yield put(fetchingData());
   try {
     const data = yield call(fetchAllBanks, params);
     yield put(fetchALlBanksSuccess(data));

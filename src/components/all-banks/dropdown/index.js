@@ -2,10 +2,14 @@ import React from "react";
 import { useState } from "react";
 import "./dropdown.css";
 
-function Dropdown({ options }) {
+function Dropdown({ options, onSelect }) {
   const [open, setOpen] = useState(false);
   const changeHandler = () => {
     setOpen(!open);
+  };
+  const handleOptionClick = (item) => {
+    setOpen(!open);
+    onSelect(item);
   };
   return (
     <div className="topic-dropdown">
@@ -29,7 +33,7 @@ function Dropdown({ options }) {
                     return (
                       <div
                         className="sub-topic-item"
-                        onClick={() => console.log("Hello")}
+                        onClick={() => handleOptionClick(item)}
                         role="presentation"
                       >
                         {item}

@@ -1,4 +1,5 @@
 import {
+  CHANGE_CATEGORY,
   FETCHING_DATA,
   FETCH_ALL_BANKS_FAILURE,
   FETCH_ALL_BANKS_SUCCESS,
@@ -88,6 +89,16 @@ const BanksReducer = (state = initialState, action) => {
         toChangeBankList: res,
         totalBanks: res.length,
         currentPage: 1,
+      };
+    }
+    case CHANGE_CATEGORY: {
+      const { category } = action;
+      const toShow = state.bankList.slice(0, state.showCount);
+      return {
+        ...state,
+        searchCriteria: category,
+        toChangeBankList: state.bankList,
+        listToShow: toShow,
       };
     }
     default:
