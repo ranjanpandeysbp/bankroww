@@ -3,10 +3,12 @@ import "./bank-table.css";
 import Loader from "./loader";
 import ShowDropdown from "./show-dropdown";
 import Pagination from "./pagination";
+import { connect } from "react-redux";
+import { updatePage, updateShowSize } from "../../../reduxstore/action/banks";
 
 function BankTable(props) {
-  const { list, isLoading, isError } = props;
-  console.log(list);
+  const { list, isLoading, isError, updateShowSize, updatePage } = props;
+  console.log(props);
   return (
     <div className="table-container">
       <div className="table-header">
@@ -75,10 +77,10 @@ function BankTable(props) {
       {list.length ? (
         <div className="table-footer">
           <div className="show-container">
-            <ShowDropdown />
+            <ShowDropdown updateShowSize={updateShowSize} />
           </div>
           <div className="pagination-container">
-            <Pagination />
+            <Pagination updatePage={(size) => updatePage(size)} />
           </div>
           <div className="rows-showing">{`Showing 10 - 20 of 200`}</div>
         </div>
@@ -87,4 +89,17 @@ function BankTable(props) {
   );
 }
 
-export default BankTable;
+const mapStateToProps = ({ banks }) => {
+  return {
+    showCount: banks.showCount,
+    currentPage: banks.currentPage,
+    totalBanks: banks.totalBanks,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateShowSize: (size) => dispatch(updateShowSize(size)),
+    updatePage: (page) => dispatch(updatePage(page)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(BankTable);

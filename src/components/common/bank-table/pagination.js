@@ -1,5 +1,7 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
+import { connect } from "react-redux";
+import { updatePage } from "../../../reduxstore/action/banks";
 import "./pagination.css";
 const PreviousButton = () => {
   return (
@@ -17,8 +19,7 @@ const NextButton = () => {
     </div>
   );
 };
-function Pagination() {
-  const handleChange = (e) => {};
+function Pagination(props) {
   return (
     <ReactPaginate
       previousLabel={<PreviousButton />}
@@ -28,11 +29,15 @@ function Pagination() {
       initialPage={0}
       marginPagesDisplayed={1}
       pageRangeDisplayed={2}
-      onPageChange={(e) => handleChange(e)}
+      onPageChange={(e) => console.log(e)}
       containerClassName="pagination"
       activeClassName="active"
     />
   );
 }
-
-export default Pagination;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updatePage: (page) => dispatch(updatePage(page)),
+  };
+};
+export default connect(null, mapDispatchToProps)(Pagination);

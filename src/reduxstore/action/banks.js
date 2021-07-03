@@ -3,6 +3,7 @@ import {
   FETCH_ALL_BANKS,
   FETCH_ALL_BANKS_FAILURE,
   FETCH_ALL_BANKS_SUCCESS,
+  UPDATE_PAGE,
   UPDATE_SHOW_SIZE,
 } from "../actionTypes/banks";
 export const fetchAllBanks = (city) => {
@@ -36,5 +37,12 @@ export const updateShowSize = (size) => {
   return {
     type: UPDATE_SHOW_SIZE,
     size,
+  };
+};
+
+export const updatePage = (page) => {
+  return {
+    tyep: UPDATE_PAGE,
+    page,
   };
 };

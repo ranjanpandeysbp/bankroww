@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchAllBanks } from "../../reduxstore/action/banks";
 import BankTable from "../common/bank-table/bank-table";
 import "./all-banks.css";
+import Dropdown from "./dropdown/index";
 function AllBanks(props) {
   const { list, isLoading, isError } = props;
   useEffect(() => {
@@ -10,7 +11,17 @@ function AllBanks(props) {
   }, []);
   return (
     <div className="all-banks">
-      <label>ALl Banks</label>
+      <div className="all-banks-options">
+        <div className="search">Search</div>
+        <div className="options-dropdown">
+          <div className="search-dropdown">
+            <Dropdown />
+          </div>
+          <div className="city-dropdown">
+            <Dropdown />
+          </div>
+        </div>
+      </div>
       <div className="all-banks-table">
         <BankTable
           list={list.slice(0, 10)}
