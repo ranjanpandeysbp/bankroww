@@ -1,0 +1,7 @@
+.bank-details {
+  padding: 8px 12px;
+}
+.bank-details-options {
+  display: flex;
+  justify-content: space-between;
+}

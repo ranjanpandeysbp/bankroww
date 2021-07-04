@@ -26,7 +26,7 @@ function App() {
             <Route exact path="/all-banks">
               <AllBanks />
             </Route>
-            <Route exact path="/bank-details">
+            <Route exact path="/bank-details/:ifsc">
               <BankDetails />
             </Route>
             <Route exact path="/favourites">

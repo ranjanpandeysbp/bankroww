@@ -5,6 +5,7 @@ import ShowDropdown from "./show-dropdown";
 import Pagination from "./pagination";
 import { connect } from "react-redux";
 import { updatePage, updateShowSize } from "../../../reduxstore/action/banks";
+import { Link } from "react-router-dom";
 
 function BankTable(props) {
   const {
@@ -58,21 +59,23 @@ function BankTable(props) {
                       <div className="table-column add-favourite">
                         <i class="fi-rr-star"></i>
                       </div>
-                      <div className="table-column bank">
-                        <div className="">{data.bank_name}</div>
-                      </div>
-                      <div className="table-column ifsc">
-                        <div className="">{data.ifsc}</div>
-                      </div>
-                      <div className="table-column branch">
-                        <div className="">{data.branch}</div>
-                      </div>
-                      <div className="table-column bank-id">
-                        <div className="">{data.bank_id}</div>
-                      </div>
-                      <div className="table-column address">
-                        <div className="">{data.address}</div>
-                      </div>
+                      <Link to={`/bank-details/${data.ifsc}`}>
+                        <div className="table-column bank">
+                          <div className="">{data.bank_name}</div>
+                        </div>
+                        <div className="table-column ifsc">
+                          <div className="">{data.ifsc}</div>
+                        </div>
+                        <div className="table-column branch">
+                          <div className="">{data.branch}</div>
+                        </div>
+                        <div className="table-column bank-id">
+                          <div className="">{data.bank_id}</div>
+                        </div>
+                        <div className="table-column address">
+                          <div className="">{data.address}</div>
+                        </div>
+                      </Link>
                     </div>
                   );
                 })
