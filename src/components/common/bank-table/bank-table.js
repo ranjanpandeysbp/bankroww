@@ -80,7 +80,17 @@ function BankTable(props) {
                   );
                 })
               ) : (
-                <div className="empty-table">Khaali hai</div>
+                <div className="empty-table">
+                  <img
+                    src="https://cdni.iconscout.com/illustration/premium/thumb/searching-in-box-3428236-2902705.png"
+                    className="empty-image"
+                    alt="Table Empty"
+                  />
+                  <p>
+                    Uh Oh! Looks like the table is empty. Change your search
+                    filters or maybe we don't have such a bank :(
+                  </p>
+                </div>
               )}
             </>
           )}

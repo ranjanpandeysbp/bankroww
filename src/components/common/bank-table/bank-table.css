@@ -31,14 +31,17 @@
   height: 1px !important;
 }
 .table-container .table .empty-table {
+  padding: 12px 0px;
   font-size: 14px;
   color: #333333;
-  height: 50px;
   line-height: 46px;
   background-color: white;
   box-shadow: 0 4px 8px 0 #eaf3fe;
   margin: auto;
   text-align: center;
+}
+.empty-table .empty-image {
+  height: 240px;
 }
 .table-container .table .table-row {
   width: 100%;
