@@ -24,3 +24,11 @@ export const categoryMap = {
   Branch: "branch",
   IFSC: "ifsc",
 };
+
+export const criteriaMap = {
+  bank_name: "Bank Name",
+  address: "Address",
+  bank_id: "Bank Id",
+  branch: "Branch",
+  ifsc: "IFSC",
+};

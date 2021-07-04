@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./dropdown.css";
 
-function Dropdown({ options, onSelect }) {
+function Dropdown({ options, onSelect, toShow }) {
   const [open, setOpen] = useState(false);
   const changeHandler = () => {
     setOpen(!open);
@@ -14,7 +14,7 @@ function Dropdown({ options, onSelect }) {
   return (
     <div className="topic-dropdown">
       <div className="current-topic">
-        <div className="main-topic">Search Category</div>
+        <div className="main-topic">{toShow}</div>
         <div className="down-arrow" onClick={changeHandler} role="presentation">
           {open ? (
             <i class="fi-rr-angle-up"></i>

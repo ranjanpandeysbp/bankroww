@@ -38,6 +38,7 @@ const BanksReducer = (state = initialState, action) => {
       );
       return {
         ...state,
+        currentCity: toShow[0].city,
         bankList: data,
         toChangeBankList: data,
         totalBanks: data.length,

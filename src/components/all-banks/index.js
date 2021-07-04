@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { dropdownCategories, dropdownCities } from "../../constants/banks";
+import {
+  criteriaMap,
+  dropdownCategories,
+  dropdownCities,
+} from "../../constants/banks";
 import {
   changeCategory,
   fetchAllBanks,
@@ -19,8 +23,10 @@ function AllBanks(props) {
     changeCategory,
     fetchAllBanks,
     searchCriteria,
+    currentCity,
   } = props;
   const [searchQuery, setSearchQuery] = useState("");
+  const searchCategory = criteriaMap[searchCriteria];
   useEffect(() => {
     fetchAllBanks("MUMBAI");
   }, []);
@@ -36,7 +42,7 @@ function AllBanks(props) {
       <div className="all-banks-options">
         <div className="search">
           <input
-            placeholder="Search banks by Name"
+            placeholder={`Search banks by ${searchCategory}`}
             value={searchQuery}
             onChange={(e) => handleSearch(e)}
           />
@@ -45,11 +51,19 @@ function AllBanks(props) {
         <div className="options-dropdown">
           <div className="dropdown-parent">
             <label className="dropdown-title-label">Search Criteria</label>
-            <Dropdown options={dropdownCategories} onSelect={changeCategory} />
+            <Dropdown
+              options={dropdownCategories}
+              onSelect={changeCategory}
+              toShow={searchCategory}
+            />
           </div>
           <div className="dropdown-parent">
             <label className="dropdown-title-label">City</label>
-            <Dropdown options={dropdownCities} onSelect={fetchAllBanks} />
+            <Dropdown
+              options={dropdownCities}
+              onSelect={fetchAllBanks}
+              toShow={currentCity}
+            />
           </div>
         </div>
       </div>
@@ -66,6 +80,7 @@ const mapStateToProps = ({ banks }) => {
     isLoading: banks.isLoading,
     isError: banks.isError,
     searchCriteria: banks.searchCriteria,
+    currentCity: banks.currentCity,
   };
 };
 const mapDispatchToProps = (dispatch) => {
