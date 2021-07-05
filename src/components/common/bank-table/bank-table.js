@@ -6,6 +6,7 @@ import Pagination from "./pagination";
 import { connect } from "react-redux";
 import { updatePage, updateShowSize } from "../../../reduxstore/action/banks";
 import { Link } from "react-router-dom";
+import { addToFav, removeFromFav } from "../../../reduxstore/action/favourites";
 
 function BankTable(props) {
   const {
@@ -17,8 +18,14 @@ function BankTable(props) {
     showCount,
     totalBanks,
     currentPage,
+    addToFav,
+    removeFromFav,
+    favourites,
   } = props;
   const total = Math.ceil(totalBanks / showCount);
+  const handleFavouriteClick = (data, isFav) => {
+    isFav ? removeFromFav(data) : addToFav(data);
+  };
   return (
     <div className="table-container">
       <div className="table-header">
@@ -54,10 +61,21 @@ function BankTable(props) {
             <>
               {list.length ? (
                 list.map((data) => {
+                  const isFav = favourites.includes(data);
                   return (
                     <div className="table-row">
                       <div className="table-column add-favourite">
-                        <i class="fi-rr-star"></i>
+                        {isFav ? (
+                          <i
+                            className="fi-sr-star"
+                            onClick={() => handleFavouriteClick(data, isFav)}
+                          ></i>
+                        ) : (
+                          <i
+                            className="fi-rr-star"
+                            onClick={() => handleFavouriteClick(data, isFav)}
+                          ></i>
+                        )}
                       </div>
                       <Link to={`/bank-details/${data.ifsc}`}>
                         <div className="table-column bank">
@@ -105,7 +123,11 @@ function BankTable(props) {
             />
           </div>
           <div className="pagination-container">
-            <Pagination updatePage={updatePage} total={total} />
+            <Pagination
+              updatePage={updatePage}
+              total={total}
+              currentPage={currentPage}
+            />
           </div>
           <div className="rows-showing">{`Showing ${
             (currentPage - 1) * showCount + 1
@@ -116,17 +138,20 @@ function BankTable(props) {
   );
 }
 
-const mapStateToProps = ({ banks }) => {
+const mapStateToProps = ({ banks, favourites }) => {
   return {
     showCount: banks.showCount,
     currentPage: banks.currentPage,
     totalBanks: banks.totalBanks,
+    favourites: favourites.favourites,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     updateShowSize: (size) => dispatch(updateShowSize(size)),
     updatePage: (page) => dispatch(updatePage(page)),
+    addToFav: (data) => dispatch(addToFav(data)),
+    removeFromFav: (data) => dispatch(removeFromFav(data)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(BankTable);

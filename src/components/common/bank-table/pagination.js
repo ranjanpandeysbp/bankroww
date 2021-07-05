@@ -20,8 +20,8 @@ const NextButton = () => {
   );
 };
 function Pagination(props) {
-  const { updatePage, total } = props;
-
+  const { updatePage, total, currentPage } = props;
+  console.log(currentPage);
   const handlePageChange = (e) => {
     updatePage(e.selected + 1);
     window.scroll(0, 0);

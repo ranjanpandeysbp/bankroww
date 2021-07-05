@@ -7,7 +7,7 @@ export const showSizes = [10, 15, 20];
 
 export const dropdownCities = [
   {
-    types: ["MUMBAI", "PUNE", "RANCHI", "DELHI", "GWALIOR"],
+    types: ["MUMBAI", "PUNE", "JODHPUR", "DELHI", "GWALIOR"],
   },
 ];
 

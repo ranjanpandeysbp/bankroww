@@ -27,6 +27,8 @@ const BanksReducer = (state = initialState, action) => {
     case FETCHING_DATA: {
       return {
         ...state,
+        totalBanks: 0,
+        currentPage: 1,
         isLoading: true,
       };
     }

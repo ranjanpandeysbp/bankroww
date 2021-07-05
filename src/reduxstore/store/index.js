@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import createSagaMiddleware from "redux-saga";
 import BanksReducer from "../reducers/banks";
+import FavouriteReducer from "../reducers/favourites";
 import { banksSaga } from "../sagas/banks";
 
 const sagas = function* sagas() {
@@ -8,6 +9,7 @@ const sagas = function* sagas() {
 };
 const rootReducer = combineReducers({
   banks: BanksReducer,
+  favourites: FavouriteReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
