@@ -5,18 +5,24 @@ import {
   UPDATE_SHOW_SIZE_FAV,
 } from "../actionTypes/favourites";
 
+const localFavs = localStorage.getItem("favs");
+const localFavsIFSC = localStorage.getItem("favsIFSC");
 const initialState = {
-  favourites: [],
+  favourites: localFavs ? JSON.parse(localFavs) : [],
   totalBanks: 0,
   currentPage: 1,
   showCount: 10,
-  favIFSC: [],
+  favIFSC: localFavsIFSC ? JSON.parse(localFavsIFSC) : [],
 };
 
 const FavouriteReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_FAV: {
       const { data } = action;
+      const localData = [...state.favourites, data];
+      const localIFSC = [...state.favIFSC, data.ifsc];
+      localStorage.setItem("favs", JSON.stringify(localData));
+      localStorage.setItem("favsIFSC", JSON.stringify(localIFSC));
       return {
         ...state,
         favourites: [...state.favourites, data],
@@ -29,6 +35,8 @@ const FavouriteReducer = (state = initialState, action) => {
         (item) => item.ifsc !== data.ifsc
       );
       const deletedFavIFSC = state.favIFSC.filter((item) => item !== data.ifsc);
+      localStorage.setItem("favs", JSON.stringify(deletedArray));
+      localStorage.setItem("favsIFSC", JSON.stringify(deletedFavIFSC));
       return {
         ...state,
         favourites: deletedArray,

@@ -10,9 +10,14 @@ import { FETCH_ALL_BANKS } from "../actionTypes/banks";
 async function fetchAllBanks(params) {
   const { city } = params;
   const url = banksUrl(city);
+  const localData = localStorage.getItem(url);
+  if (localData) {
+    const bankLocal = JSON.parse(localData);
+    return bankLocal;
+  }
   const res = await fetch(url);
   const banks = await res.json();
-  console.log(banks);
+  localStorage.setItem(url, JSON.stringify(banks));
   return banks;
 }
 
