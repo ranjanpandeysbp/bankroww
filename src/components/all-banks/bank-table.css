@@ -2,6 +2,8 @@
   width: 100%;
   min-width: 700px;
   word-wrap: break-word;
+  background: #ffffff;
+  box-shadow: 28px 28px 51px #f0f0f0, -28px -28px 51px #ffffff;
 }
 .table-container .table-header {
   background-color: #f3f4f7;

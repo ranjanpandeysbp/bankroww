@@ -4,4 +4,95 @@
 .bank-details-options {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 12px;
+}
+.back-button {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.back-button i {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+}
+
+.bank-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.details-heading {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  z-index: 5;
+}
+.bank-info-card {
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  width: 50%;
+}
+.bank-name {
+  font-size: 20px;
+  font-weight: 500;
+  border-bottom: 1px solid gray;
+  padding-bottom: 12px;
+  width: max-content;
+}
+.branch-info-item {
+  padding: 6px 0px;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 500;
+  width: 30%;
+}
+
+.bank-info-group {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 12px 0px;
+}
+
+.bank-address {
+  padding: 6px 0px;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 500;
+}
+.wrong-ifsc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.wrong-ifsc-image {
+  height: 240px;
+}
+@media only screen and (max-width: 1024px) {
+  .bank-info-card {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 512px) {
+  .bank-info-card {
+    width: 90%;
+  }
+  .branch-info-item {
+    font-size: 14px;
+  }
+  .bank-address {
+    font-size: 14px;
+  }
 }

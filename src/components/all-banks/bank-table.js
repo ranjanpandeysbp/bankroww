@@ -23,6 +23,7 @@ function BankTable(props) {
     favourites,
     favIFSC,
   } = props;
+
   const total = Math.ceil(totalBanks / showCount);
   const handleFavouriteClick = (data, isFav) => {
     isFav ? removeFromFav(data) : addToFav(data);
@@ -78,7 +79,12 @@ function BankTable(props) {
                           ></i>
                         )}
                       </div>
-                      <Link to={`/bank-details/${data.ifsc}`}>
+                      <Link
+                        to={{
+                          pathname: `/bank-details/${data.ifsc}`,
+                          state: { data: data },
+                        }}
+                      >
                         <div className="table-column bank">
                           <div className="">{data.bank_name}</div>
                         </div>
