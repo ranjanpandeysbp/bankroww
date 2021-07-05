@@ -20,7 +20,6 @@ function BankTable(props) {
     currentPage,
     addToFav,
     removeFromFav,
-    favourites,
     favIFSC,
   } = props;
 
@@ -55,7 +54,17 @@ function BankTable(props) {
       </div>
       <div className="table-body">
         <div className="table">
-          {isLoading ? (
+          {isError ? (
+            <div className="error-in-fetch">
+              <img
+                className="error-in-fetch-image"
+                src="https://cdni.iconscout.com/illustration/premium/thumb/search-result-not-found-3428237-2902696.png"
+                alt="error-in-fetch"
+              />{" "}
+              Oops we faced an error, please check your internet connection or
+              reload the page.
+            </div>
+          ) : isLoading ? (
             <div className="empty-table">
               <Loader />
             </div>
@@ -119,6 +128,7 @@ function BankTable(props) {
               )}
             </>
           )}
+          {}
         </div>
       </div>
       {list.length ? (

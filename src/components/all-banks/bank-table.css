@@ -131,3 +131,12 @@
 .add-favourite {
   width: 5%;
 }
+.error-in-fetch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.error-in-fetch-image {
+  height: 240px;
+}
