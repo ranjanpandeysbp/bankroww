@@ -6,7 +6,9 @@ function Header() {
   const [tab, setTab] = useState(tabName);
   return (
     <div className="header">
-      <label className="logo">Bankroww</label>
+      <Link to="/" className="logo-a">
+        <label className="logo">Bankroww</label>
+      </Link>
       <div className="header-menu">
         <Link to="/all-banks">
           <label

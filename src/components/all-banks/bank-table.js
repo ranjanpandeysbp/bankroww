@@ -92,6 +92,7 @@ function BankTable(props) {
                           <i
                             className="fi-sr-star"
                             onClick={() => handleFavouriteClick(data, isFav)}
+                            style={{ color: "#00D09C" }}
                           ></i>
                         ) : (
                           <i

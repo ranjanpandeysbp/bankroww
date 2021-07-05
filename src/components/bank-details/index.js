@@ -20,7 +20,7 @@ function BankDetails(props) {
         </div>
         {bank ? (
           isFavourite ? (
-            <i class="fi-sr-star"></i>
+            <i class="fi-sr-star" style={{ color: "#00D09C" }}></i>
           ) : (
             <i class="fi-rr-star"></i>
           )

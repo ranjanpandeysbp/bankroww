@@ -17,7 +17,7 @@
   box-sizing: border-box;
 }
 .topic-dropdown .current-topic .sub-topic {
-  color: #2f89fc;
+  color: #00d09c;
   font-size: 16px;
   line-height: 30px;
 }
@@ -29,7 +29,7 @@
   cursor: default;
 }
 .topic-dropdown .current-topic .down-arrow {
-  color: #2f89fc;
+  color: #00d09c;
   font-size: 16px;
   position: absolute;
   right: 20px;

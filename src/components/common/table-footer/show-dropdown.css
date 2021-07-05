@@ -14,7 +14,7 @@
   box-sizing: border-box;
   height: 25px;
   width: 45px;
-  border: 1px solid #2989fc;
+  border: 1px solid #00d09c;
   border-radius: 4px;
   background-color: white;
   padding: 4px 10px;
@@ -32,8 +32,8 @@
   top: 5px;
   cursor: pointer;
 }
+
 .show-dropdown .dropdown-container .show-list {
-  background-color: red;
   position: relative;
   /* top: 26px; */
   text-align: center;

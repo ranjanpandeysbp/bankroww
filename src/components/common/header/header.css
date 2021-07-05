@@ -10,19 +10,24 @@
   color: black;
 }
 .logo {
-  color: indigo;
+  color: #00d09c;
   font-size: 32px;
   font-weight: 800;
+  cursor: pointer;
 }
-
+.logo-a {
+  text-decoration: none;
+  cursor: pointer;
+}
 .active-tab {
-  border-bottom: 2px solid indigo;
+  border-bottom: 2px solid #00d09c;
 }
 
 .menu-option {
   font-size: 20px;
   margin-left: 12px;
   padding: 6px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1024px) {

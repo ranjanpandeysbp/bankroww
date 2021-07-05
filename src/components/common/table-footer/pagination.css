@@ -1,8 +1,9 @@
 .pagination {
   display: flex;
+  cursor: pointer;
 }
 .pagination .active a {
-  border: 1px solid #2f89fc;
+  border: 1px solid #00d09c;
   background-color: #eaf3fe;
 }
 .pagination li {

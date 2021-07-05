@@ -13,11 +13,12 @@ import {
   updatePageFav,
   updateShowSizeFav,
 } from "../../reduxstore/action/favourites";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function FavTable(props) {
   const {
     isLoading,
-    isError,
     updateShowSize,
     updatePage,
     showCount,
@@ -32,12 +33,22 @@ function FavTable(props) {
     currentPage * showCount
   );
   const total = Math.ceil(totalBanks / showCount);
+  const notifySuccess = () => toast.success("Bank added to favourite");
+  const notifyRemoved = () => toast.info("Bank removed from favourites");
   const handleFavouriteClick = (data, isFav) => {
     isFav ? removeFromFav(data) : addToFav(data);
+    isFav ? notifyRemoved() : notifySuccess();
   };
   return (
     <div className="table-container">
       <div className="table-header">
+        <ToastContainer
+          position="bottom-left"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+        />
         <div className="table">
           <div className="table-row">
             <div className="table-column add-favourite"></div>
@@ -78,6 +89,7 @@ function FavTable(props) {
                           <i
                             className="fi-sr-star"
                             onClick={() => handleFavouriteClick(data, isFav)}
+                            style={{ color: "#00D09C" }}
                           ></i>
                         ) : (
                           <i
@@ -119,8 +131,8 @@ function FavTable(props) {
                     alt="Table Empty"
                   />
                   <p>
-                    Uh Oh! Looks like the table is empty. Change your search
-                    filters or maybe we don't have such a bank :(
+                    Uh Oh! Looks like the table is empty. Add some banks to your
+                    favourites by clicking on the star :(
                   </p>
                 </div>
               )}
