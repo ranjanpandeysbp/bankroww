@@ -1,7 +1,6 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
-import { connect } from "react-redux";
-import { updatePage } from "../../../reduxstore/action/banks";
+
 import "./pagination.css";
 const PreviousButton = () => {
   return (
@@ -41,7 +40,5 @@ function Pagination(props) {
     />
   );
 }
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-export default connect(null, mapDispatchToProps)(Pagination);
+
+export default Pagination;

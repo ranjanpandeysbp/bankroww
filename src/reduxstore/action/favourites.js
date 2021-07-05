@@ -1,4 +1,9 @@
-import { ADD_TO_FAV, REMOVE_FROM_FAV } from "../actionTypes/favourites";
+import {
+  ADD_TO_FAV,
+  REMOVE_FROM_FAV,
+  UPDATE_PAGE_FAV,
+  UPDATE_SHOW_SIZE_FAV,
+} from "../actionTypes/favourites";
 
 export const addToFav = (data) => {
   console.log("Add");
@@ -13,5 +18,19 @@ export const removeFromFav = (data) => {
   return {
     type: REMOVE_FROM_FAV,
     data,
+  };
+};
+
+export const updateShowSizeFav = (size) => {
+  return {
+    type: UPDATE_SHOW_SIZE_FAV,
+    size,
+  };
+};
+
+export const updatePageFav = (page) => {
+  return {
+    type: UPDATE_PAGE_FAV,
+    page,
   };
 };

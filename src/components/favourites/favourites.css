@@ -1,0 +1,8 @@
+.fav-banks {
+  padding: 8px 12px;
+  padding-bottom: 120px;
+}
+
+.fav-banks-table {
+  overflow-x: scroll;
+}

@@ -11,7 +11,7 @@ import {
   fetchAllBanks,
   searchBanks,
 } from "../../reduxstore/action/banks";
-import BankTable from "../common/bank-table/bank-table";
+import BankTable from "./bank-table";
 import "./all-banks.css";
 import Dropdown from "./dropdown/index";
 function AllBanks(props) {
@@ -28,7 +28,7 @@ function AllBanks(props) {
   const [searchQuery, setSearchQuery] = useState("");
   const searchCategory = criteriaMap[searchCriteria];
   useEffect(() => {
-    fetchAllBanks("MUMBAI");
+    if (!list.length) fetchAllBanks("MUMBAI");
   }, []);
   useEffect(() => {
     setSearchQuery("");

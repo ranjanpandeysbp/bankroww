@@ -1,27 +1,36 @@
 import React from "react";
-import "./bank-table.css";
-import Loader from "./loader";
-import ShowDropdown from "./show-dropdown";
-import Pagination from "./pagination";
-import { connect } from "react-redux";
-import { updatePage, updateShowSize } from "../../../reduxstore/action/banks";
-import { Link } from "react-router-dom";
-import { addToFav, removeFromFav } from "../../../reduxstore/action/favourites";
+import "./fav-table.css";
 
-function BankTable(props) {
+import { connect } from "react-redux";
+
+import { Link } from "react-router-dom";
+import Loader from "../common/table-footer/loader";
+import ShowDropdown from "../common/table-footer/show-dropdown";
+import Pagination from "../common/table-footer/pagination";
+import {
+  addToFav,
+  removeFromFav,
+  updatePageFav,
+  updateShowSizeFav,
+} from "../../reduxstore/action/favourites";
+
+function FavTable(props) {
   const {
-    list,
     isLoading,
     isError,
     updateShowSize,
     updatePage,
     showCount,
-    totalBanks,
     currentPage,
     addToFav,
     removeFromFav,
     favourites,
   } = props;
+  const totalBanks = favourites.length;
+  const toShow = favourites.slice(
+    (currentPage - 1) * showCount,
+    currentPage * showCount
+  );
   const total = Math.ceil(totalBanks / showCount);
   const handleFavouriteClick = (data, isFav) => {
     isFav ? removeFromFav(data) : addToFav(data);
@@ -59,8 +68,8 @@ function BankTable(props) {
             </div>
           ) : (
             <>
-              {list.length ? (
-                list.map((data) => {
+              {toShow.length ? (
+                toShow.map((data) => {
                   const isFav = favourites.includes(data);
                   return (
                     <div className="table-row">
@@ -114,7 +123,7 @@ function BankTable(props) {
           )}
         </div>
       </div>
-      {list.length ? (
+      {toShow.length ? (
         <div className="table-footer">
           <div className="show-container">
             <ShowDropdown
@@ -138,20 +147,19 @@ function BankTable(props) {
   );
 }
 
-const mapStateToProps = ({ banks, favourites }) => {
+const mapStateToProps = ({ favourites }) => {
   return {
-    showCount: banks.showCount,
-    currentPage: banks.currentPage,
-    totalBanks: banks.totalBanks,
+    showCount: favourites.showCount,
+    currentPage: favourites.currentPage,
     favourites: favourites.favourites,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateShowSize: (size) => dispatch(updateShowSize(size)),
-    updatePage: (page) => dispatch(updatePage(page)),
+    updateShowSize: (size) => dispatch(updateShowSizeFav(size)),
+    updatePage: (page) => dispatch(updatePageFav(page)),
     addToFav: (data) => dispatch(addToFav(data)),
     removeFromFav: (data) => dispatch(removeFromFav(data)),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(BankTable);
+export default connect(mapStateToProps, mapDispatchToProps)(FavTable);

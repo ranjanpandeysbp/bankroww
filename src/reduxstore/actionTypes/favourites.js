@@ -1,3 +1,7 @@
 export const ADD_TO_FAV = "ADD_TO_FAV";
 
 export const REMOVE_FROM_FAV = "REMOVE_FROM_FAV";
+
+export const UPDATE_SHOW_SIZE_FAV = "UPDATE_SHOW_SIZE_FAV";
+
+export const UPDATE_PAGE_FAV = "UPDATE_PAGE_FAV";
