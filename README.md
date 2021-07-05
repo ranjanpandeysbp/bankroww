@@ -3,7 +3,7 @@
 `One place to find all banks in your city`
 
 <p align="center">
-  <img src='./src/assets/readme-ss-1' alt="screenshot-1" width="100%">
+  <img src='./src/assets/readme-ss-1.png' alt="screenshot-1" width="100%">
   
 </p>
 
