@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import { updatePage, updateShowSize } from "../../reduxstore/action/banks";
 import { Link } from "react-router-dom";
 import { addToFav, removeFromFav } from "../../reduxstore/action/favourites";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function BankTable(props) {
   const {
@@ -22,13 +24,23 @@ function BankTable(props) {
     removeFromFav,
     favIFSC,
   } = props;
-
+  const notifySuccess = () => toast.success("Bank added to favourite");
+  const notifyRemoved = () => toast.info("Bank removed from favourites");
   const total = Math.ceil(totalBanks / showCount);
   const handleFavouriteClick = (data, isFav) => {
     isFav ? removeFromFav(data) : addToFav(data);
+    isFav ? notifyRemoved() : notifySuccess();
   };
+
   return (
     <div className="table-container">
+      <ToastContainer
+        position="bottom-left"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+      />
       <div className="table-header">
         <div className="table">
           <div className="table-row">
